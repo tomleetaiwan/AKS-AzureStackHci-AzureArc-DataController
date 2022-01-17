@@ -65,7 +65,7 @@ az arcdata dc config replace --path ./custom/control.json --json-values "spec.st
 ```azurecli
 az arcdata dc create --path ./custom --k8s-namespace azure-arc-data --use-k8s --name arc --subscription <訂閱帳號 ID> --resource-group <資源群組名稱> --location <選定之資料中心> --connectivity-mode indirect
 ```
-開始建立之前會要求給定 Azure Arc Data Controller 所需之帳號與密碼，建立時間需數分鐘，待建立完畢之後建立以下命令確認 Azure Arc Data Controller 相關 Pod 已經在 Namespace azure-arc-data 之內順利運行。
+開始建立之前會要求給定 Azure Arc Data Controller 所需之帳號與密碼，建立時間需數分鐘，待建立完畢之後，透過以下命令確認 Azure Arc Data Controller 相關 Pod 已經在 Namespace azure-arc-data 之內順利運行。
 
 ```code
 kubectl get pod -n azure-arc-data
