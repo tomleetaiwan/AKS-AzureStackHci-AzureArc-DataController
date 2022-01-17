@@ -1,0 +1,18 @@
+    kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+     name: aks-hci-disk-custom
+    provisioner: disk.csi.akshci.com
+    parameters:
+     blocksize: "33554432"
+     container: customStorageContainer
+     dynamic: "true"
+     group: clustergroup-my-workload-cluster # same as the default storageclass
+     hostname: AKSHCIHost001.akshci.local # same as the default storageclass
+     logicalsectorsize: "4096"
+     physicalsectorsize: "4096"
+     port: "55000"
+     fsType: ext4 # refer to the note above to determine when to include this parameter
+    allowVolumeExpansion: true
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
