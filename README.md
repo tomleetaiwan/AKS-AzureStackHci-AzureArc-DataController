@@ -1,6 +1,6 @@
 
 # 之前準備
-已經依據文件內容以 Windows Admin Center 建立妥 AKS on Azure Stack HCI https://docs.microsoft.com/zh-tw/azure-stack/aks-hci/create-kubernetes-cluster
+請先依據文件 https://docs.microsoft.com/en-us/azure/azure-arc/data/install-client-tools 安裝妥所需的命令列工具，並依照 https://docs.microsoft.com/en-us/azure-stack/aks-hci/create-kubernetes-cluster 內容以 Windows Admin Center 建立妥 AKS on Azure Stack HCI 
 
 在 Windows Admin Center 中取得所建立 Kubernetes 叢集名稱。![從 Windows Admin Center 內取得 Kubernetes 叢集名稱](/images/cluster-name.png)
 
@@ -53,11 +53,11 @@ kubectl get storageclass
 如下畫面顯示結果，請記錄下之前建立之 Linux Ext4 StorageClass 名稱，以畫面中的範例是 Ext4 StorageClass 名稱是 aks-hci-disk-custom
 ![顯示所有可用之 StorageClass 名稱](/images/ext4-storage-class-name.png)
 
-執行以下命令將 Azure Arc Data Controller 組態設定檔 control.json 內與資料儲存相關的組態設定為 Ext4 的 StorageClass 名稱 aks-hci-disk-custom。
+執行以下命令將 Azure Arc Data Controller 組態設定檔 control.json 內與資料儲存相關的組態設定取代為 Ext4 的 StorageClass 名稱 aks-hci-disk-custom。
 ```azurecli
 az arcdata dc config replace --path ./custom/control.json --json-values "spec.storage.data.className=aks-hci-disk-custom"
 ```
-執行以下命令將 Azure Arc Data Controller 組態設定檔 control.json 內與日誌儲存相關的組態設定為 Ext4 的 StorageClass 名稱 aks-hci-disk-custom。
+執行以下命令將 Azure Arc Data Controller 組態設定檔 control.json 內與日誌儲存相關的組態設定取代為 Ext4 的 StorageClass 名稱 aks-hci-disk-custom。
 ```azurecli
 az arcdata dc config replace --path ./custom/control.json --json-values "spec.storage.logs.className=aks-hci-disk-custom"
 ```
@@ -71,5 +71,3 @@ az arcdata dc create --path ./custom --k8s-namespace azure-arc-data --use-k8s --
 kubectl get pod -n azure-arc-data
 ```
 ![建立 Azure Arc Data Controller](/images/azure-arc-data-controller-pods.png)
-
-
