@@ -41,7 +41,7 @@ kubectl get storageclass default -o yaml
 ```code
 kubectl apply -f custom-storage.yaml
 ```
-# 以 Linux Ext4 之 StorageClass 建立建接連線 (Indirectly connected) 模式之 Azure Arc Data Controller
+# 以 Linux Ext4 之 StorageClass 建立間接連線 (Indirectly connected) 模式之 Azure Arc Data Controller
 透過以下命令以 Azure CLI  在 ./custom 資料夾建立 Azure Arc Data Controller 組態設定檔 control.json
 ```azurecli
 az arcdata dc config init --source azure-arc-aks-hci --path ./custom 
